@@ -1,0 +1,35 @@
+with "gtkada";
+
+project Default is
+
+for Source_Dirs use ("src");
+for Object_Dir use "obj";
+for Main use ("draw_hud.adb");
+package Linker is
+   for Default_Switches("Ada") use (
+                                      "-aI/usr/include/gtkada",
+                                      "-aI/usr/include/gtk-3.0",
+                                      "-aO/usr/lib64/gtkada",
+                                      "-largs",
+                                      "-L/usr/lib64/",
+                                      "-lgtkada",
+                                      "-Wl",
+                                      "--as-needed",
+                                      "-latk-1.0",
+                                      "-lgio-2.0",
+                                      "-lpangoft2-1.0",
+                                      "-lpangocairo-1.0",
+                                      "-lharfbuzz",
+                                      "-lfontconfig",
+                                      "-lgdk_pixbuf-2.0",
+                                      "-lcairo",
+                                      "-lfreetype",
+                                      "-lglib-2.0",
+                                      "-lpango-1.0",
+                                      "-lgobject-2.0",
+                                   );
+end Linker;
+
+
+end Default;
+
